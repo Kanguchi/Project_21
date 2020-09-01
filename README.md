@@ -1,2 +1,2 @@
-# p5.play-boilerplate
-Project 20 for WhiteHat, a simulation for cars.
+# Project 21
+Project 21 for WhiteHat, a simulation for bullet damage to walls.

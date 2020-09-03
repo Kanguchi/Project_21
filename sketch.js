@@ -16,17 +16,17 @@ function setup() {
 
   wall = createSprite(1200, 200, thickness, height/2);
   wall.shapeColor = color(80, 80, 80);
-
+  wall.debug = true;
 }
 
 function draw() {
-  background(0, 0, 0); 
+  background(0, 0, 0);
+  
 
-  if (wall.x - bullet.x < wall.width/2 + bullet.width/2){
-    bullet.veloxityX = 0;
-
+  if (collison(bullet, wall)){
+    bullet.velocityX = 0;
     var damage = (0.5 * weight * speed * speed)/(thickness * thickness * thickness);
-
+    
     if (damage > 10) {
       bullet.shapeColor = color(255, 0, 0);    
     } 
@@ -34,8 +34,28 @@ function draw() {
     if (damage < 10){
       bullet.shapeColor = color(0, 255, 0);
     }
-    
+
   }
+
   bullet.collide(wall);
   drawSprites();
 }  
+
+
+
+
+
+
+function collison(lbullet, lwall){  
+  //I can't tell if i'm using the correct spellings
+  bulletRightEdge = lbullet.x + lbullet.width;
+  wallLeftEdge = lwall.x;
+
+  if (bulletRightEdge >= wallLeftEdge){
+    return true;
+  }
+  
+  return false;
+}
+
+//redo using stuff from class 21, ie: using arguments
